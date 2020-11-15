@@ -1,0 +1,3115 @@
+[
+  {
+    "tactic": "Initial Access",
+    "technique": [
+      {
+        "id": "T1189",
+        "name": "Drive-by Compromise"
+      },
+      {
+        "id": "T1190",
+        "name": "Exploit Public-Facing Application"
+      },
+      {
+        "id": "T1200",
+        "name": "Hardware Additions"
+      },
+      {
+        "id": "T1566",
+        "name": "Phishing"
+      },
+      {
+        "id": "T1566.001",
+        "name": "Spearphishing Attachment"
+      },
+      {
+        "id": "T1566.002",
+        "name": "Spearphishing Link"
+      },
+      {
+        "id": "T1566.003",
+        "name": "Spearphishing via Service"
+      },
+      {
+        "id": "T1195",
+        "name": "Supply Chain Compromise"
+      },
+      {
+        "id": "T1195.001",
+        "name": "Compromise Software Dependencies and Development Tools"
+      },
+      {
+        "id": "T1195.002",
+        "name": "Compromise Software Supply Chain"
+      },
+      {
+        "id": "T1195.003",
+        "name": "Compromise Hardware Supply Chain"
+      },
+      {
+        "id": "T1199",
+        "name": "Trusted Relationship"
+      },
+      {
+        "id": "T1078",
+        "name": "Valid Accounts"
+      },
+      {
+        "id": "T1078.001",
+        "name": "Default Accounts"
+      },
+      {
+        "id": "T1078.002",
+        "name": "Domain Accounts"
+      },
+      {
+        "id": "T1078.003",
+        "name": "Local Accounts"
+      }
+    ]
+  },
+  {
+    "tactic": "Execution",
+    "technique": [
+      {
+        "id": "T1059",
+        "name": "Command and Scripting Interpreter",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/perl"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1059.002",
+        "name": "AppleScript",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/osascript"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1059.004",
+        "name": "Unix Shell",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/sh",
+                  "/bin/bash",
+                  "/bin/zsh"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1059.005",
+        "name": "Visual Basic"
+      },
+      {
+        "id": "T1059.006",
+        "name": "Python",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/python"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1059.007",
+        "name": "JavaScript/JScript"
+      },
+      {
+        "id": "T1203",
+        "name": "Exploitation for Client Execution"
+      },
+      {
+        "id": "T1106",
+        "name": "Native API"
+      },
+      {
+        "id": "T1053",
+        "name": "Scheduled Task/Job"
+      },
+      {
+        "id": "T1053.004",
+        "name": "Launchd",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1053.003",
+        "name": "Cron",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/crontab"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1072",
+        "name": "Software Deployment Tools"
+      },
+      {
+        "id": "T1569",
+        "name": "System Services"
+      },
+      {
+        "id": "T1569.001",
+        "name": "Launchctl",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/launchctl"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1204",
+        "name": "User Execution"
+      },
+      {
+        "id": "T1204.001",
+        "name": "Malicious Link"
+      },
+      {
+        "id": "T1204.002",
+        "name": "Malicious File"
+      }
+    ]
+  },
+  {
+    "tactic": "Persistence",
+    "technique": [
+      {
+        "id": "T1098",
+        "name": "Account Manipulation"
+      },
+      {
+        "id": "T1098.004",
+        "name": "SSH Authorized Keys"
+      },
+      {
+        "id": "T1547",
+        "name": "Boot or Logon Autostart Execution"
+      },
+      {
+        "id": "T1547.006",
+        "name": "Kernel Modules and Extensions",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/kextload",
+                  "/sbin/kextunload"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1547.007",
+        "name": "Re-opened Applications",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "Library/Preferences/com.apple.loginwindow.plist",
+                  "Library/Preferences/ByHost/com.apple.loginwindow"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "com.apple.loginwindow",
+                  "LoginHook"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1547.011",
+        "name": "Plist Modification",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "event type",
+                    "has": [
+                      "ES_EVENT_TYPE_NOTIFY_WRITE"
+                    ]
+                  },
+                  {
+                    "key": "destination path",
+                    "has": [
+                      ".plist"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1037",
+        "name": "Boot or Logon Initialization Scripts"
+      },
+      {
+        "id": "T1037.002",
+        "name": "Logon Script (Mac)",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "Library/Preferences/com.apple.loginwindow.plist"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "com.apple.loginwindow",
+                  "LoginHook"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1037.004",
+        "name": "Rc.common",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/rc.common"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1037.005",
+        "name": "Startup Items",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/StartupItems"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Autorun",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/autoruns diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "src_file",
+                "has": [
+                  "/Library/StartupItems"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1176",
+        "name": "Browser Extensions"
+      },
+      {
+        "id": "T1554",
+        "name": "Compromise Client Software Binary"
+      },
+      {
+        "id": "T1136",
+        "name": "Create Account"
+      },
+      {
+        "id": "T1136.001",
+        "name": "Local Account",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/dscl"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "-create",
+                      "-delete"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1136.002",
+        "name": "Domain Account"
+      },
+      {
+        "id": "T1543",
+        "name": "Create or Modify System Process"
+      },
+      {
+        "id": "T1543.001",
+        "name": "Launch Agent",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/LaunchAgents"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/Library/LaunchAgents"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Autorun",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/autoruns diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "src_file",
+                "has": [
+                  "/Library/LaunchAgents"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1543.004",
+        "name": "Launch Daemon",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/LaunchDaemons"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/Library/LaunchDaemons"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Autorun",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/autoruns diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "src_file",
+                "has": [
+                  "/Library/LaunchDaemons"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1546",
+        "name": "Event Triggered Execution"
+      },
+      {
+        "id": "T1546.004",
+        "name": ".bash_profile and .bashrc",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  ".bash_profile",
+                  ".bashrc"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  ".bash_profile",
+                  ".bashrc"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1546.005",
+        "name": "Trap"
+      },
+      {
+        "id": "T1546.006",
+        "name": "LC_LOAD_DYLIB Addition"
+      },
+      {
+        "id": "T1546.014",
+        "name": "Emond",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1574",
+        "name": "Hijack Execution Flow"
+      },
+      {
+        "id": "T1574.004",
+        "name": "Dylib Hijacking"
+      },
+      {
+        "id": "T1053",
+        "name": "Scheduled Task/Job"
+      },
+      {
+        "id": "T1053.004",
+        "name": "Launchd",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1053.003",
+        "name": "Cron",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/crontab"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1505",
+        "name": "Server Software Component"
+      },
+      {
+        "id": "T1505.003",
+        "name": "Web Shell"
+      },
+      {
+        "id": "T1205",
+        "name": "Traffic Signaling"
+      },
+      {
+        "id": "T1205.001",
+        "name": "Port Knocking"
+      },
+      {
+        "id": "T1078",
+        "name": "Valid Accounts"
+      },
+      {
+        "id": "T1078.001",
+        "name": "Default Accounts"
+      },
+      {
+        "id": "T1078.002",
+        "name": "Domain Accounts"
+      },
+      {
+        "id": "T1078.003",
+        "name": "Local Accounts"
+      }
+    ]
+  },
+  {
+    "tactic": "Privilege Escalation",
+    "technique": [
+      {
+        "id": "T1548",
+        "name": "Abuse Elevation Control Mechanism"
+      },
+      {
+        "id": "T1548.001",
+        "name": "Setuid and Setgid",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/chmod"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "g+s",
+                      "u+s"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1548.003",
+        "name": "Sudo and Sudo Caching",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/sudo",
+                  "/sbin/visudo"
+                ]
+              },
+              {
+                "key": "args",
+                "has": [
+                  "tty_tickets",
+                  "/etc/sudoers"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/sudoers"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1548.004",
+        "name": "Elevated Execution with Prompt",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/System/Library/Frameworks/Security.framework/authtrampoline"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Lsof",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/lsof diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "name",
+                "has": [
+                  "/System/Library/Frameworks/Security.framework/authtrampoline"
+                ]
+              },
+              {
+                "key": "cmd",
+                "has": [
+                  "authtrampoline"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1547",
+        "name": "Boot or Logon Autostart Execution"
+      },
+      {
+        "id": "T1547.006",
+        "name": "Kernel Modules and Extensions",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/kextload",
+                  "/sbin/kextunload"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1547.007",
+        "name": "Re-opened Applications",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "Library/Preferences/com.apple.loginwindow.plist",
+                  "Library/Preferences/ByHost/com.apple.loginwindow"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "com.apple.loginwindow",
+                  "LoginHook"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1547.011",
+        "name": "Plist Modification",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "event type",
+                    "has": [
+                      "ES_EVENT_TYPE_NOTIFY_WRITE"
+                    ]
+                  },
+                  {
+                    "key": "destination path",
+                    "has": [
+                      ".plist"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1037",
+        "name": "Boot or Logon Initialization Scripts"
+      },
+      {
+        "id": "T1037.002",
+        "name": "Logon Script (Mac)",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "Library/Preferences/com.apple.loginwindow.plist"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "com.apple.loginwindow",
+                  "LoginHook"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1037.004",
+        "name": "Rc.common",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/rc.common"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1037.005",
+        "name": "Startup Items",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/StartupItems"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Autorun",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/autoruns diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "src_file",
+                "has": [
+                  "/Library/StartupItems"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1543",
+        "name": "Create or Modify System Process"
+      },
+      {
+        "id": "T1543.001",
+        "name": "Launch Agent",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/LaunchAgents"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/Library/LaunchAgents"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Autorun",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/autoruns diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "src_file",
+                "has": [
+                  "/Library/LaunchAgents"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1543.004",
+        "name": "Launch Daemon",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/LaunchDaemons"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/Library/LaunchDaemons"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Autorun",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/autoruns diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "src_file",
+                "has": [
+                  "/Library/LaunchDaemons"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1546",
+        "name": "Event Triggered Execution"
+      },
+      {
+        "id": "T1546.004",
+        "name": ".bash_profile and .bashrc",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  ".bash_profile",
+                  ".bashrc"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  ".bash_profile",
+                  ".bashrc"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1546.005",
+        "name": "Trap"
+      },
+      {
+        "id": "T1546.006",
+        "name": "LC_LOAD_DYLIB Addition"
+      },
+      {
+        "id": "T1546.014",
+        "name": "Emond",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1068",
+        "name": "Exploitation for Privilege Escalation"
+      },
+      {
+        "id": "T1574",
+        "name": "Hijack Execution Flow"
+      },
+      {
+        "id": "T1574.004",
+        "name": "Dylib Hijacking"
+      },
+      {
+        "id": "T1055",
+        "name": "Process Injection"
+      },
+      {
+        "id": "T1053",
+        "name": "Scheduled Task/Job"
+      },
+      {
+        "id": "T1053.004",
+        "name": "Launchd",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "/etc/emond.d/rules/",
+                  "/private/var/db/emondClients/"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1053.003",
+        "name": "Cron",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/crontab"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1078",
+        "name": "Valid Accounts"
+      },
+      {
+        "id": "T1078.001",
+        "name": "Default Accounts"
+      },
+      {
+        "id": "T1078.002",
+        "name": "Domain Accounts"
+      },
+      {
+        "id": "T1078.003",
+        "name": "Local Accounts"
+      }
+    ]
+  },
+  {
+    "tactic": "Defense Evasion",
+    "technique": [
+      {
+        "id": "T1548",
+        "name": "Abuse Elevation Control Mechanism"
+      },
+      {
+        "id": "T1548.001",
+        "name": "Setuid and Setgid",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/chmod"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "g+s",
+                      "u+s"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1548.003",
+        "name": "Sudo and Sudo Caching",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/sudo",
+                  "/sbin/visudo"
+                ]
+              },
+              {
+                "key": "args",
+                "has": [
+                  "tty_tickets",
+                  "/etc/sudoers"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/etc/sudoers"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1548.004",
+        "name": "Elevated Execution with Prompt",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/System/Library/Frameworks/Security.framework/authtrampoline"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Lsof",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/lsof diff.json"
+            ],
+            "pattern": [
+              {
+                "key": "name",
+                "has": [
+                  "/System/Library/Frameworks/Security.framework/authtrampoline"
+                ]
+              },
+              {
+                "key": "cmd",
+                "has": [
+                  "authtrampoline"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1547",
+        "name": "Boot or Logon Autostart Execution"
+      },
+      {
+        "id": "T1547.006",
+        "name": "Kernel Modules and Extensions",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/kextload",
+                  "/sbin/kextunload"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1480",
+        "name": "Execution Guardrails"
+      },
+      {
+        "id": "T1480.001",
+        "name": "Environmental Keying"
+      },
+      {
+        "id": "T1211",
+        "name": "Exploitation for Defense Evasion"
+      },
+      {
+        "id": "T1222",
+        "name": "File and Directory Permissions Modification"
+      },
+      {
+        "id": "T1222.002",
+        "name": "Linux and Mac File and Directory Permissions Modification",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/chmod"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1564",
+        "name": "Hide Artifacts"
+      },
+      {
+        "id": "T1564.001",
+        "name": "Hidden Files and Directories",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/chflags"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "hidden"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1564.002",
+        "name": "Hidden Users"
+      },
+      {
+        "id": "T1564.003",
+        "name": "Hidden Window"
+      },
+      {
+        "id": "T1564.005",
+        "name": "Hidden File System"
+      },
+      {
+        "id": "T1564.006",
+        "name": "Run Virtual Instance"
+      },
+      {
+        "id": "T1574",
+        "name": "Hijack Execution Flow"
+      },
+      {
+        "id": "T1574.004",
+        "name": "Dylib Hijacking"
+      },
+      {
+        "id": "T1562",
+        "name": "Impair Defenses"
+      },
+      {
+        "id": "T1562.001",
+        "name": "Disable or Modify Tools"
+      },
+      {
+        "id": "T1562.003",
+        "name": "HISTCONTROL"
+      },
+      {
+        "id": "T1562.004",
+        "name": "Disable or Modify System Firewall"
+      },
+      {
+        "id": "T1070",
+        "name": "Indicator Removal on Host"
+      },
+      {
+        "id": "T1070.002",
+        "name": "Clear Linux or Mac System Logs"
+      },
+      {
+        "id": "T1070.003",
+        "name": "Clear Command History"
+      },
+      {
+        "id": "T1070.004",
+        "name": "File Deletion"
+      },
+      {
+        "id": "T1070.006",
+        "name": "Timestomp"
+      },
+      {
+        "id": "T1036",
+        "name": "Masquerading"
+      },
+      {
+        "id": "T1036.001",
+        "name": "Invalid Code Signature"
+      },
+      {
+        "id": "T1036.002",
+        "name": "Right-to-Left Override"
+      },
+      {
+        "id": "T1036.003",
+        "name": "Rename System Utilities"
+      },
+      {
+        "id": "T1036.005",
+        "name": "Match Legitimate Name or Location"
+      },
+      {
+        "id": "T1036.006",
+        "name": "Space after Filename"
+      },
+      {
+        "id": "T1556",
+        "name": "Modify Authentication Process"
+      },
+      {
+        "id": "T1556.003",
+        "name": "Pluggable Authentication Modules"
+      },
+      {
+        "id": "T1027",
+        "name": "Obfuscated Files or Information"
+      },
+      {
+        "id": "T1027.001",
+        "name": "Binary Padding"
+      },
+      {
+        "id": "T1027.002",
+        "name": "Software Packing"
+      },
+      {
+        "id": "T1027.003",
+        "name": "Steganography"
+      },
+      {
+        "id": "T1027.004",
+        "name": "Compile After Delivery"
+      },
+      {
+        "id": "T1027.005",
+        "name": "Indicator Removal from Tools"
+      },
+      {
+        "id": "T1055",
+        "name": "Process Injection"
+      },
+      {
+        "id": "T1014",
+        "name": "Rootkit"
+      },
+      {
+        "id": "T1553",
+        "name": "Subvert Trust Controls"
+      },
+      {
+        "id": "T1553.001",
+        "name": "Gatekeeper Bypass",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/xattr"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "-d"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "com.apple.quarantine"
+                    ]
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "key": "args",
+                    "has": [
+                      "spctl"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "--master-disable"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1553.002",
+        "name": "Code Signing"
+      },
+      {
+        "id": "T1553.004",
+        "name": "Install Root Certificate",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/security"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "add-trusted-cert"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "trustRoot"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1205",
+        "name": "Traffic Signaling"
+      },
+      {
+        "id": "T1205.001",
+        "name": "Port Knocking"
+      },
+      {
+        "id": "T1078",
+        "name": "Valid Accounts"
+      },
+      {
+        "id": "T1078.001",
+        "name": "Default Accounts"
+      },
+      {
+        "id": "T1078.002",
+        "name": "Domain Accounts"
+      },
+      {
+        "id": "T1078.003",
+        "name": "Local Accounts"
+      },
+      {
+        "id": "T1497",
+        "name": "Virtualization/Sandbox Evasion"
+      },
+      {
+        "id": "T1497.001",
+        "name": "System Checks"
+      },
+      {
+        "id": "T1497.002",
+        "name": "User Activity Based Checks"
+      },
+      {
+        "id": "T1497.003",
+        "name": "Time Based Evasion"
+      }
+    ]
+  },
+  {
+    "tactic": "Credential Access",
+    "technique": [
+      {
+        "id": "T1110",
+        "name": "Brute Force"
+      },
+      {
+        "id": "T1110.001",
+        "name": "Password Guessing"
+      },
+      {
+        "id": "T1110.002",
+        "name": "Password Cracking"
+      },
+      {
+        "id": "T1110.003",
+        "name": "Password Spraying"
+      },
+      {
+        "id": "T1110.004",
+        "name": "Credential Stuffing"
+      },
+      {
+        "id": "T1555",
+        "name": "Credentials from Password Stores"
+      },
+      {
+        "id": "T1555.001",
+        "name": "Keychain",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/Keychains"
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/security"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "find-certificate"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1555.002",
+        "name": "Securityd Memory"
+      },
+      {
+        "id": "T1555.003",
+        "name": "Credentials from Web Browsers",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "destination path",
+                "has": [
+                  "/Library/Cookies",
+                  ".binarycookies"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1212",
+        "name": "Exploitation for Credential Access"
+      },
+      {
+        "id": "T1056",
+        "name": "Input Capture"
+      },
+      {
+        "id": "T1056.001",
+        "name": "Keylogging"
+      },
+      {
+        "id": "T1056.002",
+        "name": "GUI Input Capture"
+      },
+      {
+        "id": "T1056.003",
+        "name": "Web Portal Capture"
+      },
+      {
+        "id": "T1557",
+        "name": "Man-in-the-Middle"
+      },
+      {
+        "id": "T1556",
+        "name": "Modify Authentication Process"
+      },
+      {
+        "id": "T1556.003",
+        "name": "Pluggable Authentication Modules"
+      },
+      {
+        "id": "T1040",
+        "name": "Network Sniffing",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/tcpdump",
+                  "tshark"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1003",
+        "name": "OS Credential Dumping"
+      },
+      {
+        "id": "T1539",
+        "name": "Steal Web Session Cookie"
+      },
+      {
+        "id": "T1111",
+        "name": "Two-Factor Authentication Interception"
+      },
+      {
+        "id": "T1552",
+        "name": "Unsecured Credentials"
+      },
+      {
+        "id": "T1552.001",
+        "name": "Credentials In Files"
+      },
+      {
+        "id": "T1552.003",
+        "name": "Bash History",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "_history"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1552.004",
+        "name": "Private Keys",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "args",
+                "has": [
+                  "id_rsa",
+                  "id_dsa"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tactic": "Discovery",
+    "technique": [
+      {
+        "id": "T1087",
+        "name": "Account Discovery"
+      },
+      {
+        "id": "T1087.001",
+        "name": "Local Account"
+      },
+      {
+        "id": "T1087.002",
+        "name": "Domain Account"
+      },
+      {
+        "id": "T1010",
+        "name": "Application Window Discovery"
+      },
+      {
+        "id": "T1217",
+        "name": "Browser Bookmark Discovery",
+        "detection": [
+          {
+            "evidence": "File Operation",
+            "tool": "FileMonitor.app",
+            "source": [
+              "logs/FileMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "destination path",
+                    "has": [
+                      "/Firefox/Profiles",
+                      "/Google/Chrome"
+                    ]
+                  },
+                  {
+                    "key": "destination path",
+                    "has": [
+                      "places.sqlite",
+                      "Bookmarks"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1083",
+        "name": "File and Directory Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source" :[
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/ls",
+                  "/bin/find",
+                  "/bin/locate",
+                  "/bin/cat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1046",
+        "name": "Network Service Scanning",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/nmap",
+                  "telnet",
+                  "/bin/nc"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1135",
+        "name": "Network Share Discovery"
+      },
+      {
+        "id": "T1040",
+        "name": "Network Sniffing",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/tcpdump",
+                  "tshark"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1201",
+        "name": "Password Policy Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/bin/pwpolicy"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "getaccountpolicies"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1120",
+        "name": "Peripheral Device Discovery"
+      },
+      {
+        "id": "T1069",
+        "name": "Permission Groups Discovery"
+      },
+      {
+        "id": "T1069.002",
+        "name": "Domain Groups"
+      },
+      {
+        "id": "T1069.001",
+        "name": "Local Groups"
+      },
+      {
+        "id": "T1057",
+        "name": "Process Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/ps"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1018",
+        "name": "Remote System Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/arp",
+                  "/bin/nslookup"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1518",
+        "name": "Software Discovery"
+      },
+      {
+        "id": "T1518.001",
+        "name": "Security Software Discovery"
+      },
+      {
+        "id": "T1082",
+        "name": "System Information Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/ioreg",
+                  "/bin/sw_vers",
+                  "/bin/uname",
+                  "/sbin/system_profiler",
+                  "/bin/hostname",
+                  "/sbin/systemsetup",
+                  "/sbin/sysctl"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1016",
+        "name": "System Network Configuration Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/arp",
+                  "/sbin/ifconfig",
+                  "/sbin/netstat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1049",
+        "name": "System Network Connections Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/netstat",
+                  "/bin/who"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1033",
+        "name": "System Owner/User Discovery",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/users",
+                  "/bin/who"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1497",
+        "name": "Virtualization/Sandbox Evasion"
+      },
+      {
+        "id": "T1497.001",
+        "name": "System Checks"
+      },
+      {
+        "id": "T1497.002",
+        "name": "User Activity Based Checks"
+      },
+      {
+        "id": "T1497.003",
+        "name": "Time Based Evasion"
+      }
+    ]
+  },
+  {
+    "tactic": "Lateral Movement",
+    "technique": [
+      {
+        "id": "T1210",
+        "name": "Exploitation of Remote Services"
+      },
+      {
+        "id": "T1534",
+        "name": "Internal Spearphishing"
+      },
+      {
+        "id": "T1570",
+        "name": "Lateral Tool Transfer"
+      },
+      {
+        "id": "T1563",
+        "name": "Remote Service Session Hijacking"
+      },
+      {
+        "id": "T1563.001",
+        "name": "SSH Hijacking"
+      },
+      {
+        "id": "T1021",
+        "name": "Remote Services"
+      },
+      {
+        "id": "T1021.004",
+        "name": "SSH"
+      },
+      {
+        "id": "T1021.005",
+        "name": "VNC"
+      },
+      {
+        "id": "T1072",
+        "name": "Software Deployment Tools"
+      }
+    ]
+  },
+  {
+    "tactic": "Collection",
+    "technique": [
+      {
+        "id": "T1560",
+        "name": "Archive Collected Data"
+      },
+      {
+        "id": "T1560.001",
+        "name": "Archive via Utility",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/zip",
+                  "/bin/gzip",
+                  "/bin/tar",
+                  "/bin/7z",
+                  "/bin/rar"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1560.002",
+        "name": "Archive via Library"
+      },
+      {
+        "id": "T1560.003",
+        "name": "Archive via Custom Method"
+      },
+      {
+        "id": "T1123",
+        "name": "Audio Capture"
+      },
+      {
+        "id": "T1119",
+        "name": "Automated Collection"
+      },
+      {
+        "id": "T1115",
+        "name": "Clipboard Data"
+      },
+      {
+        "id": "T1213",
+        "name": "Data from Information Repositories"
+      },
+      {
+        "id": "T1005",
+        "name": "Data from Local System"
+      },
+      {
+        "id": "T1039",
+        "name": "Data from Network Shared Drive"
+      },
+      {
+        "id": "T1025",
+        "name": "Data from Removable Media"
+      },
+      {
+        "id": "T1074",
+        "name": "Data Staged"
+      },
+      {
+        "id": "T1074.001",
+        "name": "Local Data Staging"
+      },
+      {
+        "id": "T1074.002",
+        "name": "Remote Data Staging"
+      },
+      {
+        "id": "T1056",
+        "name": "Input Capture"
+      },
+      {
+        "id": "T1056.001",
+        "name": "Keylogging"
+      },
+      {
+        "id": "T1056.002",
+        "name": "GUI Input Capture"
+      },
+      {
+        "id": "T1056.003",
+        "name": "Web Portal Capture"
+      },
+      {
+        "id": "T1557",
+        "name": "Man-in-the-Middle"
+      },
+      {
+        "id": "T1113",
+        "name": "Screen Capture",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/screencapture"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1125",
+        "name": "Video Capture"
+      }
+    ]
+  },
+  {
+    "tactic": "Command and Control",
+    "technique": [
+      {
+        "id": "T1071",
+        "name": "Application Layer Protocol",
+        "detection": [
+          {
+            "evidence": "Lsof",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/lsof diff.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "name",
+                    "has": [
+                      "->"
+                    ]
+                  },
+                  {
+                    "key": "type",
+                    "has": [
+                      "IPv4",
+                      "IPv6"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "evidence": "Netstat",
+            "tool": "AutoMacTC",
+            "source": [
+              "artifacts/automactc/netstat diff.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "state",
+                    "has": [
+                      "ESTABLISHED"
+                    ]
+                  },
+                  {
+                    "key": "protocol",
+                    "has": [
+                      "tcp4",
+                      "tcp6"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1071.001",
+        "name": "Web Protocols"
+      },
+      {
+        "id": "T1071.002",
+        "name": "File Transfer Protocols"
+      },
+      {
+        "id": "T1071.003",
+        "name": "Mail Protocols"
+      },
+      {
+        "id": "T1071.004",
+        "name": "DNS"
+      },
+      {
+        "id": "T1092",
+        "name": "Communication Through Removable Media"
+      },
+      {
+        "id": "T1132",
+        "name": "Data Encoding"
+      },
+      {
+        "id": "T1132.001",
+        "name": "Standard Encoding",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/base64"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1132.002",
+        "name": "Non-Standard Encoding"
+      },
+      {
+        "id": "T1001",
+        "name": "Data Obfuscation"
+      },
+      {
+        "id": "T1001.001",
+        "name": "Junk Data"
+      },
+      {
+        "id": "T1001.002",
+        "name": "Steganography"
+      },
+      {
+        "id": "T1001.003",
+        "name": "Protocol Impersonation"
+      },
+      {
+        "id": "T1568",
+        "name": "Dynamic Resolution"
+      },
+      {
+        "id": "T1568.002",
+        "name": "Domain Generation Algorithms"
+      },
+      {
+        "id": "T1568.001",
+        "name": "Fast Flux DNS"
+      },
+      {
+        "id": "T1568.003",
+        "name": "DNS Calculation"
+      },
+      {
+        "id": "T1573",
+        "name": "Encrypted Channel"
+      },
+      {
+        "id": "T1573.001",
+        "name": "Symmetric Cryptography"
+      },
+      {
+        "id": "T1573.002",
+        "name": "Asymmetric Cryptography"
+      },
+      {
+        "id": "T1008",
+        "name": "Fallback Channels"
+      },
+      {
+        "id": "T1105",
+        "name": "Ingress Tool Transfer",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/bin/sftp",
+                  "/bin/rsync",
+                  "/bin/scp"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1104",
+        "name": "Multi-Stage Channels"
+      },
+      {
+        "id": "T1095",
+        "name": "Non-Application Layer Protocol"
+      },
+      {
+        "id": "T1571",
+        "name": "Non-Standard Port"
+      },
+      {
+        "id": "T1572",
+        "name": "Protocol Tunneling"
+      },
+      {
+        "id": "T1090",
+        "name": "Proxy"
+      },
+      {
+        "id": "T1090.001",
+        "name": "Internal Proxy",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "and": [
+                  {
+                    "key": "path",
+                    "has": [
+                      "/sbin/networksetup"
+                    ]
+                  },
+                  {
+                    "key": "args",
+                    "has": [
+                      "-setwebproxy",
+                      "-setsecurewebproxy",
+                      "-setwebproxystate",
+                      "-setsecurewebproxystate"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1090.002",
+        "name": "External Proxy"
+      },
+      {
+        "id": "T1090.003",
+        "name": "Multi-hop Proxy"
+      },
+      {
+        "id": "T1090.004",
+        "name": "Domain Fronting"
+      },
+      {
+        "id": "T1219",
+        "name": "Remote Access Software"
+      },
+      {
+        "id": "T1205",
+        "name": "Traffic Signaling"
+      },
+      {
+        "id": "T1205.001",
+        "name": "Port Knocking"
+      },
+      {
+        "id": "T1102",
+        "name": "Web Service"
+      },
+      {
+        "id": "T1102.001",
+        "name": "Dead Drop Resolver"
+      },
+      {
+        "id": "T1102.002",
+        "name": "Bidirectional Communication"
+      },
+      {
+        "id": "T1102.003",
+        "name": "One-Way Communication"
+      }
+    ]
+  },
+  {
+    "tactic": "Exfiltration",
+    "technique": [
+      {
+        "id": "T1020",
+        "name": "Automated Exfiltration"
+      },
+      {
+        "id": "T1030",
+        "name": "Data Transfer Size Limits"
+      },
+      {
+        "id": "T1048",
+        "name": "Exfiltration Over Alternative Protocol"
+      },
+      {
+        "id": "T1048.001",
+        "name": "Exfiltration Over Symmetric Encrypted Non-C2 Protocol"
+      },
+      {
+        "id": "T1048.002",
+        "name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol"
+      },
+      {
+        "id": "T1048.003",
+        "name": "Exfiltration Over Unencrypted/Obfuscated Non-C2 Protocol"
+      },
+      {
+        "id": "T1041",
+        "name": "Exfiltration Over C2 Channel"
+      },
+      {
+        "id": "T1011",
+        "name": "Exfiltration Over Other Network Medium"
+      },
+      {
+        "id": "T1011.001",
+        "name": "Exfiltration Over Bluetooth"
+      },
+      {
+        "id": "T1052",
+        "name": "Exfiltration Over Physical Medium"
+      },
+      {
+        "id": "T1052.001",
+        "name": "Exfiltration over USB"
+      },
+      {
+        "id": "T1567",
+        "name": "Exfiltration Over Web Service"
+      },
+      {
+        "id": "T1567.001",
+        "name": "Exfiltration to Code Repository"
+      },
+      {
+        "id": "T1567.002",
+        "name": "Exfiltration to Cloud Storage"
+      },
+      {
+        "id": "T1029",
+        "name": "Scheduled Transfer"
+      }
+    ]
+  },
+  {
+    "tactic": "Impact",
+    "technique": [
+      {
+        "id": "T1531",
+        "name": "Account Access Removal"
+      },
+      {
+        "id": "T1485",
+        "name": "Data Destruction"
+      },
+      {
+        "id": "T1486",
+        "name": "Data Encrypted for Impact"
+      },
+      {
+        "id": "T1565",
+        "name": "Data Manipulation"
+      },
+      {
+        "id": "T1565.001",
+        "name": "Stored Data Manipulation"
+      },
+      {
+        "id": "T1565.002",
+        "name": "Transmitted Data Manipulation"
+      },
+      {
+        "id": "T1565.003",
+        "name": "Runtime Data Manipulation"
+      },
+      {
+        "id": "T1491",
+        "name": "Defacement"
+      },
+      {
+        "id": "T1491.001",
+        "name": "Internal Defacement"
+      },
+      {
+        "id": "T1491.002",
+        "name": "External Defacement"
+      },
+      {
+        "id": "T1561",
+        "name": "Disk Wipe"
+      },
+      {
+        "id": "T1561.001",
+        "name": "Disk Content Wipe"
+      },
+      {
+        "id": "T1561.002",
+        "name": "Disk Structure Wipe"
+      },
+      {
+        "id": "T1499",
+        "name": "Endpoint Denial of Service"
+      },
+      {
+        "id": "T1499.001",
+        "name": "OS Exhaustion Flood"
+      },
+      {
+        "id": "T1499.002",
+        "name": "Service Exhaustion Flood"
+      },
+      {
+        "id": "T1499.003",
+        "name": "Application Exhaustion Flood"
+      },
+      {
+        "id": "T1499.004",
+        "name": "Application or System Exploitation"
+      },
+      {
+        "id": "T1495",
+        "name": "Firmware Corruption"
+      },
+      {
+        "id": "T1490",
+        "name": "Inhibit System Recovery"
+      },
+      {
+        "id": "T1498",
+        "name": "Network Denial of Service"
+      },
+      {
+        "id": "T1498.001",
+        "name": "Direct Network Flood"
+      },
+      {
+        "id": "T1498.002",
+        "name": "Reflection Amplification"
+      },
+      {
+        "id": "T1496",
+        "name": "Resource Hijacking"
+      },
+      {
+        "id": "T1529",
+        "name": "System Shutdown/Reboot",
+        "detection": [
+          {
+            "evidence": "Process Operation",
+            "tool": "ProcessMonitor.app",
+            "source": [
+              "logs/ProcessMonitor*.json"
+            ],
+            "pattern": [
+              {
+                "key": "path",
+                "has": [
+                  "/sbin/shutdown",
+                  "/sbin/reboot"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

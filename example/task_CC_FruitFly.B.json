@@ -1,0 +1,32 @@
+{
+  "id": "sha256_befa9bfe488244c64db096522b4fad73fc01ea8c4cd0323f1cbdee81ba008271",
+  "name": "CC_FruitFly.B",
+  "vm": "/Users/segno/Security/macOS/macOS 10.15.vmwarevm/macOS 10.15.vmx",
+  "collector": "/Users/user/macOSCollector",
+  "monitor": "/Users/user/macOSMonitor",
+  "snapshot": "Before State",
+  "user_name": "user",
+  "user_password": "1234",
+  "root_password": "1234",
+  "files": [
+    {
+      "source": "/Users/segno/Project/CC_FruitFly.B/.fpsaud",
+      "target": "/Users/user/.fpsaud"
+    },
+    {
+      "source": "/Users/segno/Project/CC_FruitFly.B/com.client.client.plist",
+      "target": "/Users/user/com.client.client.plist"
+    },
+    {
+      "source": "/Users/segno/Project/CC_FruitFly.B/install.sh",
+      "target": "/Users/user/install.sh"
+    }
+  ],
+  "commands": [
+    {
+      "command": "/bin/sh /Users/user/install.sh",
+      "permission": "root"
+    }
+  ],
+  "time": "15"
+}

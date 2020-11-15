@@ -1,0 +1,100 @@
+[
+  {
+    "path": "artifacts/automactc/asl*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/autoruns*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/bash*.json",
+    "ignore": [
+      "atime"
+    ]
+  },
+  {
+    "path": "artifacts/automactc/browser_chrome_downloads*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/browser_chrome_history*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/browser_chrome_profiles*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/browser_firefox_downloads*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/browser_firefox_history*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/coreanalytics*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/installhistory*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/lsof*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/mru*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/netstat*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/pslist*.json",
+    "ignore": [
+      "runtime"
+    ]
+  },
+  {
+    "path": "artifacts/automactc/quarantines*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/spotlight*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/ssh*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/syslog*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/systeminfo*.json",
+    "ignore": [
+      "amtc_runtime"
+    ]
+  },
+  {
+    "path": "artifacts/automactc/terminalstate*.json",
+    "ignore": []
+  },
+  {
+    "path": "artifacts/automactc/users*.json",
+    "ignore": [
+      "ctime",
+      "mtime",
+      "atime"
+    ]
+  },
+  {
+    "path": "artifacts/automactc/utmpx*.json",
+    "ignore": []
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "id": "sha256_ca638ad723f9e935262bf7b0b2e116d6885f034dc09e3a709ba093420717ac4e",
+  "name": "GDoor",
+  "vm": "/Users/segno/Security/macOS/macOS 10.15.vmwarevm/macOS 10.15.vmx",
+  "collector": "/Users/user/macOSCollector",
+  "monitor": "/Users/user/macOSMonitor",
+  "snapshot": "Go 1.8 Environment",
+  "user_name": "user",
+  "user_password": "1234",
+  "root_password": "1234",
+  "files": [],
+  "commands": [],
+  "time": "120"
+}

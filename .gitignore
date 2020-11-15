@@ -1,0 +1,7 @@
+evidence/*
+reports/*
+*.pyc
+*.swp
+*.txt
+data.js
+.DS_Store

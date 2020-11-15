@@ -1,0 +1,34 @@
+rect {
+    fill: #cccccc;
+    cursor: pointer;
+}
+.active {
+    fill: orange;
+    stroke: orange;
+    stroke-width: 2px;
+}
+.active-link {
+    fill: none;
+    stroke: orange;
+    stroke-width: 4px;
+}
+.label {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.link {
+    fill: none;
+    stroke: #dddddd;
+    stroke-width: 2px;
+}
+input {
+    font-size: 25px;
+    border: none;
+}
+label {
+    font-size: 25px;
+    font-family: sans-serif;
+}
